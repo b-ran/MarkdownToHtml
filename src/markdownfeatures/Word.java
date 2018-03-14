@@ -2,7 +2,9 @@ package markdownfeatures;
 
 import conversion.ConversionVisitor;
 
-public class Nothing implements Feature{
+public class Word implements Feature{
+
+    private String input = "";
 
     @Override
     public boolean detect(String input) {
@@ -10,17 +12,17 @@ public class Nothing implements Feature{
     }
 
     @Override
-    public void setInput(String input) {}
+    public void setInput(String input) {this.input = input;}
 
 
     @Override
     public String getInput() {
-        return "";
+        return input;
     }
 
     @Override
     public StringBuilder convert(ConversionVisitor conversionVisitor, StringBuilder out) {
-        return out;
+        return conversionVisitor.translate(this, out);
     }
 
 }

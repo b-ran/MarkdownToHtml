@@ -36,13 +36,16 @@ public class Interpreter {
         while (scanner.hasNextLine()) {
 
             line = scanner.nextLine();
-            findFeature(line).convert(conversionFormat, out);
+            //findFeature(line).convert(conversionFormat, out);
             Scanner lineScanner = new Scanner(line);
 
             while (lineScanner.hasNext()) {
                 next = lineScanner.next();
-                findFeature(next).convert(conversionFormat, out);;
+                System.out.println(next);
+                findFeature(next).convert(conversionFormat, out);
             }
+
+            out.append("\n");
         }
         return null;
     }
@@ -54,6 +57,8 @@ public class Interpreter {
                 return feature;
             }
         }
-        return new Nothing();
+        Word word = new Word();
+        word.setInput(current);
+        return word;
     }
 }
