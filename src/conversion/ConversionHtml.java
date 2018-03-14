@@ -8,22 +8,23 @@ public class ConversionHtml implements ConversionVisitor {
 
 
     @Override
-    public String translate(Heading heading, String input) {
-        return "<h" + heading.getLevel() + "> " + input + " " + "</h" + heading.getLevel() + ">";
-    }
-
-    @Override
-    public String translate(Italic italic, String input) {
+    public StringBuilder translate(Heading heading, StringBuilder out) {
+        //return "<h" + heading.getLevel() + "> " + input + " " + "</h" + heading.getLevel() + ">";
         return null;
     }
 
     @Override
-    public String translate(Bold bold, String input) {
+    public StringBuilder translate(Italic italic, StringBuilder out) {
         return null;
     }
 
     @Override
-    public String translate(Paragraph paragraph, String input) {
+    public StringBuilder translate(Bold bold, StringBuilder out) {
+        return null;
+    }
+
+    @Override
+    public StringBuilder translate(Paragraph paragraph, StringBuilder out) {
         return null;
     }
 }
