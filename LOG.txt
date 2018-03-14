@@ -1,2 +1,5 @@
 20180212 1300 designed & implemented structure
-20180312 1500 add input & detection systems for core features
+20180313 1500 add input & detection systems for core features
+20180314 1400 fully implemented vistor pattern
+20180314 1500 started work on html conversion
+20180315 1900 add conversion for heading & italics & refactored a few objects 
