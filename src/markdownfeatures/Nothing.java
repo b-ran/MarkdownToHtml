@@ -10,8 +10,17 @@ public class Nothing implements Feature{
     }
 
     @Override
-    public void set(String input) {}
+    public void setInput(String input) {}
+
 
     @Override
-    public String convert(ConversionVisitor conversionVisitor) {return "";}
+    public String getInput() {
+        return "";
+    }
+
+    @Override
+    public StringBuilder convert(ConversionVisitor conversionVisitor, StringBuilder out) {
+        return out;
+    }
+
 }

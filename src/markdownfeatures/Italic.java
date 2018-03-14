@@ -24,12 +24,17 @@ public class Italic implements Feature {
     }
 
     @Override
-    public void set(String input) {
+    public void setInput(String input) {
         this.input = input;
     }
 
     @Override
-    public String convert(ConversionVisitor conversionVisitor) {
-        return conversionVisitor.translate(this, input);
+    public String getInput() {
+        return input;
+    }
+
+    @Override
+    public StringBuilder convert(ConversionVisitor conversionVisitor, StringBuilder out) {
+        return conversionVisitor.translate(this, out);
     }
 }
