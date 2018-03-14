@@ -1,9 +1,7 @@
 package processor;
 
-import markdownfeatures.Bold;
-import markdownfeatures.Feature;
-import markdownfeatures.Heading;
-import markdownfeatures.Italic;
+import conversion.ConversionHtml;
+import markdownfeatures.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,11 +12,13 @@ import java.util.Scanner;
 public class Interpreter {
 
     private Scanner scanner;
+    private ConversionHtml conversionFormat = new ConversionHtml();
 
     private static final List<Feature> features = new ArrayList<>(Arrays.asList(
             new Heading(),
             new Italic(),
-            new Bold()
+            new Bold(),
+            new Paragraph()
     ));
 
     public Interpreter(String path) {
@@ -31,12 +31,29 @@ public class Interpreter {
 
     public StringBuilder convert() {
         String next = "";
-        while (scanner.hasNext()) {
-            next = scanner.next();
-            for (Feature feature : features) {
-                System.out.println(feature.toString() + " " + next + " " + feature.detect(next));
+        String line = "";
+        StringBuilder out = new StringBuilder();
+        while (scanner.hasNextLine()) {
+
+            line = scanner.nextLine();
+            findFeature(line).convert(conversionFormat);
+            Scanner lineScanner = new Scanner(line);
+
+            while (lineScanner.hasNext()) {
+                next = lineScanner.next();
+                findFeature(next).convert(conversionFormat);;
             }
         }
         return null;
+    }
+
+    private Feature findFeature(String current) {
+        for (Feature feature : features) {
+            if (feature.detect(current)) {
+                feature.set(current);
+                return feature;
+            }
+        }
+        return new Nothing();
     }
 }
