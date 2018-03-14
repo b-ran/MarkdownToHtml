@@ -26,6 +26,12 @@ public class Italic implements Feature {
     @Override
     public void setInput(String input) {
         this.input = input;
+        format();
+    }
+
+    private void format() {
+        input = input.substring(1);
+        input = input.substring(0, input.length()-1);
     }
 
     @Override
