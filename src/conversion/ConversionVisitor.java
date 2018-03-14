@@ -13,4 +13,6 @@ public interface ConversionVisitor {
 
     StringBuilder translate(Paragraph paragraph, StringBuilder out);
 
+    StringBuilder translate(Word word, StringBuilder out);
+
 }
