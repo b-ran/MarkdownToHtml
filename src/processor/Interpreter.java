@@ -36,12 +36,12 @@ public class Interpreter {
         while (scanner.hasNextLine()) {
 
             line = scanner.nextLine();
-            findFeature(line).convert(conversionFormat);
+            findFeature(line).convert(conversionFormat, out);
             Scanner lineScanner = new Scanner(line);
 
             while (lineScanner.hasNext()) {
                 next = lineScanner.next();
-                findFeature(next).convert(conversionFormat);;
+                findFeature(next).convert(conversionFormat, out);;
             }
         }
         return null;
@@ -50,7 +50,7 @@ public class Interpreter {
     private Feature findFeature(String current) {
         for (Feature feature : features) {
             if (feature.detect(current)) {
-                feature.set(current);
+                feature.setInput(current);
                 return feature;
             }
         }
