@@ -7,15 +7,21 @@ import java.lang.*;
 public class ConversionHtml implements ConversionVisitor {
 
 
+    private int nextLocation = 0;
+
     @Override
     public StringBuilder translate(Heading heading, StringBuilder out) {
-        //return "<h" + heading.getLevel() + "> " + input + " " + "</h" + heading.getLevel() + ">";
-        return null;
+        StringBuilder output = combine("<h" + heading.getLevel() + "></h" + heading.getLevel() + ">", out);
+        nextLocation += 4;
+        return output;
     }
 
     @Override
     public StringBuilder translate(Italic italic, StringBuilder out) {
-        return null;
+        String inner = "<em>" + italic.getInput() + "</em>";
+        StringBuilder output = combine(inner, out);
+        nextLocation += inner.length();
+        return output;
     }
 
     @Override
@@ -26,5 +32,18 @@ public class ConversionHtml implements ConversionVisitor {
     @Override
     public StringBuilder translate(Paragraph paragraph, StringBuilder out) {
         return null;
+    }
+
+    @Override
+    public StringBuilder translate(Word word, StringBuilder out) {
+        String inner = word.getInput();
+        StringBuilder output = combine(inner, out);
+        nextLocation += inner.length();
+        return output;
+    }
+
+    private StringBuilder combine (String inner, StringBuilder out) {
+        out.insert(nextLocation, inner);
+        return out;
     }
 }
