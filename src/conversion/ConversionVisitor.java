@@ -5,12 +5,12 @@ import markdownfeatures.*;
 
 public interface ConversionVisitor {
 
-    String translate(Heading heading, String input);
+    StringBuilder translate(Heading heading, StringBuilder out);
 
-    String translate(Italic italic, String input);
+    StringBuilder translate(Italic italic, StringBuilder out);
 
-    String translate(Bold bold, String input);
+    StringBuilder translate(Bold bold, StringBuilder out);
 
-    String translate(Paragraph paragraph, String input);
+    StringBuilder translate(Paragraph paragraph, StringBuilder out);
 
 }

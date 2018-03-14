@@ -6,8 +6,10 @@ public interface Feature {
 
     boolean detect(String input);
 
-    void set(String input);
+    void setInput(String input);
 
-    String convert(ConversionVisitor conversionVisitor);
+    String getInput();
+
+    StringBuilder convert(ConversionVisitor conversionVisitor, StringBuilder out);
 
 }
