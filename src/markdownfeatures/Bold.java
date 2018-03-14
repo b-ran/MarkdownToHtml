@@ -4,6 +4,8 @@ import conversion.ConversionVisitor;
 
 public class Bold implements Feature {
 
+    private String input = "";
+
     @Override
     public boolean detect(String input) {
         String in = input.trim();
@@ -12,11 +14,11 @@ public class Bold implements Feature {
 
     @Override
     public void set(String input) {
-
+        this.input = input;
     }
 
     @Override
-    public void convert(ConversionVisitor conversionVisitor) {
-
+    public String convert(ConversionVisitor conversionVisitor) {
+        return conversionVisitor.translate(this, input);
     }
 }

@@ -5,6 +5,7 @@ import conversion.ConversionVisitor;
 public class Italic implements Feature {
 
     private static final int limit = 2;
+    private String input = "";
 
     @Override
     public boolean detect(String input) {
@@ -24,11 +25,11 @@ public class Italic implements Feature {
 
     @Override
     public void set(String input) {
-
+        this.input = input;
     }
 
     @Override
-    public void convert(ConversionVisitor conversionVisitor) {
-
+    public String convert(ConversionVisitor conversionVisitor) {
+        return conversionVisitor.translate(this, input);
     }
 }

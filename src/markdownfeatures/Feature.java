@@ -8,6 +8,6 @@ public interface Feature {
 
     void set(String input);
 
-    void convert(ConversionVisitor conversionVisitor);
+    String convert(ConversionVisitor conversionVisitor);
 
 }

@@ -6,6 +6,7 @@ public class Heading implements Feature {
 
     private static final int LIMIT = 6;
     private int level = 0;
+    private String input = "";
 
     @Override
     public boolean detect(String input) {
@@ -26,13 +27,19 @@ public class Heading implements Feature {
     }
 
 
-    @Override
-    public void set(String input) {
-
+    public int getLevel() {
+        return level;
     }
 
     @Override
-    public void convert(ConversionVisitor conversionVisitor) {
-        conversionVisitor.translate(this);
+    public void set(String input) {
+        this.input = input;
+        this.input = this.input.replace('#' , ' ');
+        this.input = this.input.trim();
+    }
+
+    @Override
+    public String convert(ConversionVisitor conversionVisitor) {
+       return conversionVisitor.translate(this, input);
     }
 }
