@@ -11,19 +11,12 @@ public class Heading implements Feature {
     @Override
     public boolean detect(String input) {
         String in = input.trim();
-        for (int i = 0; i < in.length(); i++) {
+        for (char letter : in.toCharArray()) {
+            if (letter != '#') return false;
             if (level > LIMIT) return false;
-            switch(in.charAt(i)) {
-                case '#' :
-                    level++;
-                    continue;
-                case ' ' :
-                    return true;
-                default :
-                    return false;
-            }
+            level++;
         }
-        return false;
+        return true;
     }
 
 
