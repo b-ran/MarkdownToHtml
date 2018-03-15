@@ -1,13 +1,15 @@
 package markdownfeatures;
 
 import conversion.ConversionVisitor;
+import markdownfeatures.separation.SeparateNull;
+import markdownfeatures.separation.Separation;
 
 public class Paragraph implements Feature {
 
     private String input = "";
 
     @Override
-    public boolean detect(String input) {
+    public boolean detect(String next, String line) {
         return input.isEmpty();
     }
 
@@ -24,6 +26,11 @@ public class Paragraph implements Feature {
     @Override
     public StringBuilder convert(ConversionVisitor conversionVisitor, StringBuilder out) {
         return conversionVisitor.translate(this, out);
+    }
+
+    @Override
+    public Separation getSeparation() {
+        return new SeparateNull();
     }
 
 }

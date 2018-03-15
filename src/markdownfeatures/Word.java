@@ -1,13 +1,15 @@
 package markdownfeatures;
 
 import conversion.ConversionVisitor;
+import markdownfeatures.separation.SeparateNull;
+import markdownfeatures.separation.Separation;
 
 public class Word implements Feature{
 
     private String input = "";
 
     @Override
-    public boolean detect(String input) {
+    public boolean detect(String next, String line) {
         return false;
     }
 
@@ -23,6 +25,11 @@ public class Word implements Feature{
     @Override
     public StringBuilder convert(ConversionVisitor conversionVisitor, StringBuilder out) {
         return conversionVisitor.translate(this, out);
+    }
+
+    @Override
+    public Separation getSeparation() {
+        return new SeparateNull();
     }
 
 }
