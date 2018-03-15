@@ -42,7 +42,7 @@ public class Interpreter {
             while (lineScanner.hasNext()) {
                 next = lineScanner.next();
                 System.out.println(next);
-                findFeature(next).convert(conversionFormat, out);
+                findFeature(next, line).convert(conversionFormat, out);
             }
 
             out.append("\n");
@@ -50,15 +50,15 @@ public class Interpreter {
         return null;
     }
 
-    private Feature findFeature(String current) {
+    private Feature findFeature(String next, String line) {
         for (Feature feature : features) {
-            if (feature.detect(current)) {
-                feature.setInput(current);
+            if (feature.detect(next, line)) {
+                feature.setInput(next);
                 return feature;
             }
         }
         Word word = new Word();
-        word.setInput(current);
+        word.setInput(next);
         return word;
     }
 }
