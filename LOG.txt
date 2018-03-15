@@ -2,4 +2,6 @@
 20180313 1500 add input & detection systems for core features
 20180314 1400 fully implemented vistor pattern
 20180314 1500 started work on html conversion
-20180315 1900 add conversion for heading & italics & refactored a few objects 
+20180315 1900 add conversion for heading & italics & refactored a few objects
+20180316 2000 add separation system
+20180316 2100 updated conversion to work with separation
