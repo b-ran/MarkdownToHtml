@@ -1,6 +1,5 @@
 package tests;
 
-
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -11,7 +10,8 @@ import org.junit.runners.Suite;
         ItalicTest.class,
         ParagraphTest.class,
         NullTest.class,
-        WordTest.class
+        WordTest.class,
+        SeparatorTest.class
 })
 
 public class RunAllTests {
