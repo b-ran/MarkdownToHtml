@@ -61,14 +61,19 @@ public class HeadingTest {
             Heading heading = new Heading();
             headingTags += addTag;
             line = headingTags + " heading";
-            heading.detect(headingTags, headingTags);
+            heading.detect(headingTags, line);
             assertTrue(heading.getLevel() == headingTags.length());
         }
     }
 
     @Test
-    public void test10_string_detection_empty_line_valid() throws Exception {
-        assertTrue(new Heading().detect("###", "###"));
+    public void test10_string_detection_spacing_valid() throws Exception {
+        assertTrue(new Heading().detect("###", "   ###"));
+    }
+
+    @Test
+    public void test11_string_detection_spacing_invalid() throws Exception {
+        assertFalse(new Heading().detect("###", "    ###"));
     }
 
 }

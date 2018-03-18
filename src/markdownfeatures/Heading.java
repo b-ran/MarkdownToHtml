@@ -22,7 +22,7 @@ public class Heading implements Feature {
         if (!new Scanner(line).next().equals(in)) return false;
 
         if (line.length() > 3) {
-            if (line.charAt(3) == format.charAt(0)) return false;
+            if (line.charAt(0) == ' ' && line.charAt(3) == ' ') return false;
         }
 
         for (char letter : in.toCharArray()) {
