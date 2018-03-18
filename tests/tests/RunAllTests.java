@@ -10,8 +10,8 @@ import org.junit.runners.Suite;
         HeadingTest.class,
         ItalicTest.class,
         ParagraphTest.class,
-//        NullTest.class,
-//        WordTest.class
+        NullTest.class,
+        WordTest.class
 })
 
 public class RunAllTests {
