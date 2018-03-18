@@ -40,7 +40,7 @@ public class BoldTest {
     }
 
     @Test
-    public void test06_separation_creation() throws Exception {
+    public void test07_separation_creation() throws Exception {
         Bold bold = new Bold();
         assertTrue(bold.detect("**sepa", "**sepa ration**"));
         assertTrue(bold.getSeparation().isSeparation());
