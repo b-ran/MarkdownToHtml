@@ -59,7 +59,15 @@ public class ConversionHtml implements ConversionVisitor {
     }
 
     @Override
-    public StringBuilder endFile(StringBuilder out) {
+    public StringBuilder translate(Separator separator, StringBuilder out) {
+        StringBuilder output = end(out);
+        output.append("<hr>");
+        nextLocation = output.length();
+        return output;
+    }
+
+    @Override
+    public StringBuilder end(StringBuilder out) {
         if (!newParagraph) {
             out.append("</p>");
         }
