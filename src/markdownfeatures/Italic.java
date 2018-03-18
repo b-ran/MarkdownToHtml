@@ -31,18 +31,6 @@ public class Italic implements Feature {
         return false;
     }
 
-
-
-    private boolean limit(String input) {
-        int count = 0;
-        for (char c : input.toCharArray()) {
-            if (c == format.charAt(0)) {
-                count++;
-            }
-        }
-        return count <= limit;
-    }
-
     public Separation getSeparation() {
         return separation;
     }
