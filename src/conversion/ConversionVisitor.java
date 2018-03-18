@@ -15,4 +15,5 @@ public interface ConversionVisitor {
 
     StringBuilder translate(Word word, StringBuilder out);
 
+    StringBuilder endFile(StringBuilder out);
 }
