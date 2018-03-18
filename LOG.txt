@@ -5,3 +5,6 @@
 20180315 1900 add conversion for heading & italics & refactored a few objects
 20180316 2000 add separation system
 20180316 2100 updated conversion to work with separation
+20180318 1700 fix input systme and add output
+20180318 1800 refactoring & add testing for current features	
+20180318 2100 Add separator feature & testing for separator
