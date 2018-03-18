@@ -10,7 +10,7 @@ public class Italic implements Feature {
     private static final int limit = 2;
     private String input = "";
 
-    private final String format = "*";
+    private final static String format = "*";
     private Separation separation = new SeparateNull();
 
     @Override

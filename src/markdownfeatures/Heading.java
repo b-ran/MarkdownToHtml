@@ -12,6 +12,8 @@ public class Heading implements Feature {
     private int level = 0;
     private String input = "";
 
+    private final static String format = "#";
+
     @Override
     public boolean detect(String next, String line) {
         String in = next.trim();
@@ -20,12 +22,12 @@ public class Heading implements Feature {
         if (!new Scanner(line).next().equals(in)) return false;
 
         if (line.length() > 3) {
-            if (line.charAt(3) == ' ') return false;
+            if (line.charAt(3) == format.charAt(0)) return false;
         }
 
         for (char letter : in.toCharArray()) {
             level++;
-            if (letter != '#') return false;
+            if (letter != format.charAt(0)) return false;
             if (level > LIMIT) return false;
 
         }
@@ -40,7 +42,7 @@ public class Heading implements Feature {
     @Override
     public void setInput(String input) {
         this.input = input;
-        this.input = this.input.replace('#' , ' ');
+        this.input = this.input.replace(format.charAt(0) , ' ');
         this.input = this.input.trim();
     }
 
