@@ -34,6 +34,11 @@ public class Bold implements Feature {
     }
 
     @Override
+    public boolean convertible() {
+        return true;
+    }
+
+    @Override
     public void setInput(String input) {
         this.input = input;
         format();

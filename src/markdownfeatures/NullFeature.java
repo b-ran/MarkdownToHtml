@@ -4,34 +4,25 @@ import conversion.ConversionVisitor;
 import markdownfeatures.separation.SeparateNull;
 import markdownfeatures.separation.Separation;
 
-public class Word implements Feature{
-
-    private String input = "";
-
-    public Word(String input) {
-        setInput(input);
-    }
-
-    public Word() {
-    }
+public class NullFeature implements Feature {
 
     @Override
     public boolean detect(String next, String line) {
-        return true;
+        return false;
     }
 
     @Override
-    public void setInput(String input) {this.input = input;}
-
+    public void setInput(String input) {
+    }
 
     @Override
     public String getInput() {
-        return input;
+        return "";
     }
 
     @Override
     public StringBuilder convert(ConversionVisitor conversionVisitor, StringBuilder out) {
-        return conversionVisitor.translate(this, out);
+        return out;
     }
 
     @Override
@@ -41,7 +32,6 @@ public class Word implements Feature{
 
     @Override
     public boolean convertible() {
-        return true;
+        return false;
     }
-
 }

@@ -16,12 +16,12 @@ public class Italic implements Feature {
     @Override
     public boolean detect(String next, String line) {
         String in = next.trim();
+        if (in.length() == 1) return false;
         if (in.charAt(1) == format.charAt(0)) return false;
         if (separation.detect(next)) return true;
 
         if (!in.startsWith(format)) return false;
-
-        if (in.endsWith(format) && in.length() > 2 && in.charAt(in.length()-1) != format.charAt(0)) return true;
+        if (in.endsWith(format) && in.length() > 2 && in.charAt(in.length()-2) != format.charAt(0)) return true;
 
         if(SeparateTags.detectSeparation(in, line, format)) {
             separation = new SeparateTags(format);
@@ -45,6 +45,11 @@ public class Italic implements Feature {
 
     public Separation getSeparation() {
         return separation;
+    }
+
+    @Override
+    public boolean convertible() {
+        return true;
     }
 
     @Override

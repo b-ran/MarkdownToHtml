@@ -14,4 +14,6 @@ public interface Feature {
     StringBuilder convert(ConversionVisitor conversionVisitor, StringBuilder out);
 
     Separation getSeparation();
+
+    boolean convertible();
 }

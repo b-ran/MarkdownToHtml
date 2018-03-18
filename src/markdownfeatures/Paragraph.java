@@ -8,9 +8,10 @@ public class Paragraph implements Feature {
 
     private String input = "";
 
+
     @Override
     public boolean detect(String next, String line) {
-        return input.isEmpty();
+        return line.isEmpty();
     }
 
     @Override
@@ -31,6 +32,11 @@ public class Paragraph implements Feature {
     @Override
     public Separation getSeparation() {
         return new SeparateNull();
+    }
+
+    @Override
+    public boolean convertible() {
+        return true;
     }
 
 }
