@@ -8,7 +8,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         BoldTest.class,
         HeadingTest.class,
-//        ItalicTest.class,
+        ItalicTest.class,
 //        ParagraphTest.class,
 //        NullTest.class,
 //        WordTest.class
