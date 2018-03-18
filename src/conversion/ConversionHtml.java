@@ -10,6 +10,8 @@ public class ConversionHtml implements ConversionVisitor {
 
 
     private int nextLocation = 0;
+    private boolean newParagraph = true;
+    private boolean endParagraph = false;
 
     @Override
     public StringBuilder translate(Heading heading, StringBuilder out) {
@@ -17,6 +19,7 @@ public class ConversionHtml implements ConversionVisitor {
         nextLocation += 4;
         return output;
     }
+
 
     @Override
     public StringBuilder translate(Italic italic, StringBuilder out) {
@@ -36,7 +39,15 @@ public class ConversionHtml implements ConversionVisitor {
 
     @Override
     public StringBuilder translate(Paragraph paragraph, StringBuilder out) {
-        return null;
+        if (newParagraph) {
+            out.append("<p>");
+            newParagraph = !newParagraph;
+        } else if (endParagraph) {
+            out.append("</p><p>");
+        }
+        endParagraph = false;
+        nextLocation = out.length();
+        return out;
     }
 
     @Override
@@ -45,6 +56,14 @@ public class ConversionHtml implements ConversionVisitor {
         StringBuilder output = combine(inner, out);
         nextLocation += inner.length()+1;
         return output;
+    }
+
+    @Override
+    public StringBuilder endFile(StringBuilder out) {
+        if (!newParagraph) {
+            out.append("</p>");
+        }
+        return out;
     }
 
     private String getText(Feature feature, String startTag, String exitTag) {
@@ -62,6 +81,7 @@ public class ConversionHtml implements ConversionVisitor {
     }
 
     private StringBuilder combine (String inner, StringBuilder out) {
+        endParagraph = true;
         inner += " ";
         out.insert(nextLocation, inner);
         return out;
