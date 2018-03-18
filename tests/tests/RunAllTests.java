@@ -9,7 +9,7 @@ import org.junit.runners.Suite;
         BoldTest.class,
         HeadingTest.class,
         ItalicTest.class,
-//        ParagraphTest.class,
+        ParagraphTest.class,
 //        NullTest.class,
 //        WordTest.class
 })
