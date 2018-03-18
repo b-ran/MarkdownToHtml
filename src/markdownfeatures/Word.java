@@ -17,7 +17,7 @@ public class Word implements Feature{
 
     @Override
     public boolean detect(String next, String line) {
-        return true;
+        return !next.isEmpty() && !next.chars().allMatch(Character::isSpaceChar);
     }
 
     @Override
