@@ -36,8 +36,8 @@ public class NullTest {
 
     @Test
     public void test06_separation() throws Exception {
-        NullFeature paragraph = new NullFeature();
-        assertFalse(paragraph.detect("\njdjidfs847", "\njdjidfs847 jjds&&$****   "));
-        assertFalse(paragraph.getSeparation().isSeparation());
+        NullFeature nullFeature = new NullFeature();
+        assertFalse(nullFeature.detect("\njdjidfs847", "\njdjidfs847 jjds&&$****   "));
+        assertFalse(nullFeature.getSeparation().isSeparation());
     }
 }
