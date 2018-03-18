@@ -14,10 +14,14 @@ public class Interpreter {
     private Scanner scanner;
     private ConversionHtml conversionFormat = new ConversionHtml();
 
-    private static final List<Feature> features = new ArrayList<>(Arrays.asList(
-            new Heading(),
+    private static final List<Feature> wordFeatures = new ArrayList<>(Arrays.asList(
             new Italic(),
-            new Bold(),
+            new Heading(),
+            new Bold()
+    ));
+
+    private static final List<Feature> lineFeatures = new ArrayList<>(Arrays.asList(
+            new Heading(),
             new Paragraph()
     ));
 
@@ -30,35 +34,45 @@ public class Interpreter {
     }
 
     public StringBuilder convert() {
-        String next = "";
         String line = "";
         StringBuilder out = new StringBuilder();
         while (scanner.hasNextLine()) {
-
+            String next = "";
             line = scanner.nextLine();
-            //findFeature(line).convert(conversionFormat, out);
+
+            Feature feature =  findLineFeature(next, line);
+            if (feature.convertible()) {
+                feature.convert(conversionFormat, out);
+                continue;
+            }
+
             Scanner lineScanner = new Scanner(line);
 
             while (lineScanner.hasNext()) {
                 next = lineScanner.next();
-                System.out.println(next);
-                findFeature(next, line).convert(conversionFormat, out);
+                out = findWordFeature(next, line).convert(conversionFormat, out);
             }
-
-            out.append("\n");
         }
-        return null;
+        return conversionFormat.endFile(out);
     }
 
-    private Feature findFeature(String next, String line) {
-        for (Feature feature : features) {
+    private Feature findLineFeature(String next, String line) {
+        for (Feature feature : lineFeatures) {
+            if (feature.detect(next, line)) {
+                feature.setInput(line);
+                return feature;
+            }
+        }
+        return new NullFeature();
+    }
+
+    private Feature findWordFeature(String next, String line) {
+        for (Feature feature : wordFeatures) {
             if (feature.detect(next, line)) {
                 feature.setInput(next);
                 return feature;
             }
         }
-        Word word = new Word();
-        word.setInput(next);
-        return word;
+        return new Word(next);
     }
 }
