@@ -53,7 +53,7 @@ public class Interpreter {
                 out = findWordFeature(next, line).convert(conversionFormat, out);
             }
         }
-        return conversionFormat.endFile(out);
+        return conversionFormat.end(out);
     }
 
     private Feature findLineFeature(String next, String line) {
