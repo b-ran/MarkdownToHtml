@@ -6,8 +6,7 @@ import markdownfeatures.separation.Separation;
 
 public class Paragraph implements Feature {
 
-    private String input = "";
-
+    private static final String input = "";
 
     @Override
     public boolean detect(String next, String line) {
@@ -16,12 +15,11 @@ public class Paragraph implements Feature {
 
     @Override
     public void setInput(String input) {
-        this.input = input;
     }
 
     @Override
     public String getInput() {
-        return input;
+        return "";
     }
 
     @Override
