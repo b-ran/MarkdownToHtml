@@ -17,5 +17,7 @@ public interface ConversionVisitor {
 
     StringBuilder translate(Separator separator, StringBuilder out);
 
+    StringBuilder translate(Blockquote blockquote, StringBuilder out);
+
     StringBuilder end(StringBuilder out);
 }

@@ -67,6 +67,11 @@ public class ConversionHtml implements ConversionVisitor {
     }
 
     @Override
+    public StringBuilder translate(Blockquote blockquote, StringBuilder out) {
+        return null;
+    }
+
+    @Override
     public StringBuilder end(StringBuilder out) {
         if (!newParagraph) {
             out.append("</p>");
