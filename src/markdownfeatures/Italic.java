@@ -16,7 +16,7 @@ public class Italic implements Feature {
     @Override
     public boolean detect(String next, String line) {
         String in = next.trim();
-        if (in.length() == 1) return false;
+        if (in.length() <= 1) return false;
         if (in.charAt(1) == format.charAt(0)) return false;
         if (separation.detect(next)) return true;
 
