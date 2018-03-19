@@ -21,5 +21,9 @@ public interface ConversionVisitor {
 
     StringBuilder translate(Inline inline, StringBuilder out);
 
+    StringBuilder translate(Block block, StringBuilder out);
+
+    StringBuilder newline(StringBuilder out);
+
     StringBuilder end(StringBuilder out);
 }

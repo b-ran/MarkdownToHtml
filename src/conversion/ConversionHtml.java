@@ -13,13 +13,9 @@ public class ConversionHtml implements ConversionVisitor {
     private boolean newParagraph = true;
     private boolean endParagraph = false;
 
-    private boolean continuousTag = false;
-    private String continuousClosingTag = "";
-
     @Override
     public StringBuilder translate(Heading heading, StringBuilder out) {
-        StringBuilder output = closeContinuousTag(out);
-        output = combine("<h" + heading.getLevel() + "></h" + heading.getLevel() + ">", output);
+        StringBuilder output = combine("<h" + heading.getLevel() + "></h" + heading.getLevel() + ">", out);
         nextLocation += 4;
         return output;
     }
@@ -64,8 +60,7 @@ public class ConversionHtml implements ConversionVisitor {
 
     @Override
     public StringBuilder translate(Separator separator, StringBuilder out) {
-        StringBuilder output = closeContinuousTag(out);
-        output = end(output);
+        StringBuilder output = end(out);
         output.append("<hr>");
         nextLocation = output.length();
         return output;
@@ -73,12 +68,9 @@ public class ConversionHtml implements ConversionVisitor {
 
     @Override
     public StringBuilder translate(Blockquote blockquote, StringBuilder out) {
-        StringBuilder output = end(out);
-        output.append("<blockquote>");
-        continuousTag = true;
-        continuousClosingTag = "</blockquote>";
-        nextLocation = output.length();
-        return output;
+        out.append("<blockquote></blockquote>");
+        nextLocation += 12;
+        return out;
     }
 
     @Override
@@ -90,18 +82,24 @@ public class ConversionHtml implements ConversionVisitor {
     }
 
     @Override
-    public StringBuilder end(StringBuilder out) {
-        if (!newParagraph) {
-            out.append("</p>");
-        }
+    public StringBuilder translate(Block block, StringBuilder out) {
+        String inner = getText(block, "<code>", "</code>");
+        out.append(inner);
+        nextLocation = out.length();
         return out;
     }
 
-    private StringBuilder closeContinuousTag(StringBuilder out) {
-        if (continuousTag) {
-            out.append(continuousClosingTag);
-            continuousClosingTag = "";
-            nextLocation = out.length();
+    @Override
+    public StringBuilder newline(StringBuilder out) {
+        out.append("\n");
+        nextLocation = out.length();
+        return out;
+    }
+
+    @Override
+    public StringBuilder end(StringBuilder out) {
+        if (!newParagraph) {
+            out.append("</p>");
         }
         return out;
     }
