@@ -16,9 +16,9 @@ public class Inline implements Feature {
         String in = next.trim();
         if (in.length() == 0) return false;
         if (separation.detect(next)) return true;
-
+        if (!in.startsWith(format)) return false;
         if (in.length() > 1) {
-            if (in.charAt(1) == format.charAt(0) || !in.startsWith(format)) return false;
+            if (in.charAt(1) == format.charAt(0)) return false;
         }
         if(SeparateTags.detectSeparation(in, line, format)) {
             separation = new SeparateTags(format);
