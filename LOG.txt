@@ -8,3 +8,6 @@
 20180318 1700 fix input systme and add output
 20180318 1800 refactoring & add testing for current features	
 20180318 2100 Add separator feature & testing for separator
+20180319 1800 Add blockquote feature, html conversion and testing for blockquote
+20180319 2000 Add inline feature, html conversion and testing for inline 
+20180319 2100 Add code block feature, html conversion, testing for code block and bug fixing
