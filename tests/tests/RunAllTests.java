@@ -13,7 +13,8 @@ import org.junit.runners.Suite;
         WordTest.class,
         SeparatorTest.class,
         BlockquoteTest.class,
-        InlineTest.class
+        InlineTest.class,
+        BlockTest.class
 })
 
 public class RunAllTests {
