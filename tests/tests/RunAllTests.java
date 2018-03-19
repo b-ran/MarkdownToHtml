@@ -12,7 +12,8 @@ import org.junit.runners.Suite;
         NullTest.class,
         WordTest.class,
         SeparatorTest.class,
-        BlockquoteTest.class
+        BlockquoteTest.class,
+        InlineTest.class
 })
 
 public class RunAllTests {
