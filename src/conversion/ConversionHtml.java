@@ -13,9 +13,13 @@ public class ConversionHtml implements ConversionVisitor {
     private boolean newParagraph = true;
     private boolean endParagraph = false;
 
+    private boolean continuousTag = false;
+    private String continuousClosingTag = "";
+
     @Override
     public StringBuilder translate(Heading heading, StringBuilder out) {
-        StringBuilder output = combine("<h" + heading.getLevel() + "></h" + heading.getLevel() + ">", out);
+        StringBuilder output = closeContinuousTag(out);
+        output = combine("<h" + heading.getLevel() + "></h" + heading.getLevel() + ">", output);
         nextLocation += 4;
         return output;
     }
@@ -60,7 +64,8 @@ public class ConversionHtml implements ConversionVisitor {
 
     @Override
     public StringBuilder translate(Separator separator, StringBuilder out) {
-        StringBuilder output = end(out);
+        StringBuilder output = closeContinuousTag(out);
+        output = end(output);
         output.append("<hr>");
         nextLocation = output.length();
         return output;
@@ -68,13 +73,27 @@ public class ConversionHtml implements ConversionVisitor {
 
     @Override
     public StringBuilder translate(Blockquote blockquote, StringBuilder out) {
-        return null;
+        StringBuilder output = end(out);
+        output.append("<blockquote>");
+        continuousTag = true;
+        continuousClosingTag = "</blockquote>";
+        nextLocation = output.length();
+        return output;
     }
 
     @Override
     public StringBuilder end(StringBuilder out) {
         if (!newParagraph) {
             out.append("</p>");
+        }
+        return out;
+    }
+
+    private StringBuilder closeContinuousTag(StringBuilder out) {
+        if (continuousTag) {
+            out.append(continuousClosingTag);
+            continuousClosingTag = "";
+            nextLocation = out.length();
         }
         return out;
     }

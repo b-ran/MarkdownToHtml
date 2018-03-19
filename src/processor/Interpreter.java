@@ -17,12 +17,14 @@ public class Interpreter {
     private static final List<Feature> wordFeatures = new ArrayList<>(Arrays.asList(
             new Italic(),
             new Heading(),
-            new Bold()
+            new Bold(),
+            new Blockquote()
     ));
 
     private static final List<Feature> lineFeatures = new ArrayList<>(Arrays.asList(
             new Heading(),
-            new Paragraph()
+            new Paragraph(),
+            new Separator()
     ));
 
     public Interpreter(String path) {
