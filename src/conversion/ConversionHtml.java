@@ -82,6 +82,14 @@ public class ConversionHtml implements ConversionVisitor {
     }
 
     @Override
+    public StringBuilder translate(Inline inline, StringBuilder out) {
+        String inner = getText(inline, "<code>", "</code>");
+        StringBuilder output = combine(inner, out);
+        nextLocation += inner.length()+1;
+        return output;
+    }
+
+    @Override
     public StringBuilder end(StringBuilder out) {
         if (!newParagraph) {
             out.append("</p>");

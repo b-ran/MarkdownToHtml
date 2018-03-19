@@ -19,5 +19,7 @@ public interface ConversionVisitor {
 
     StringBuilder translate(Blockquote blockquote, StringBuilder out);
 
+    StringBuilder translate(Inline inline, StringBuilder out);
+
     StringBuilder end(StringBuilder out);
 }
