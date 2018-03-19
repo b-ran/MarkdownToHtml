@@ -12,8 +12,8 @@ public class Blockquote implements Feature {
 
     @Override
     public boolean detect(String next, String line) {
-        if (line.length() <= format.length()) return false;
-        return line.charAt(0) == format.charAt(0) && line.charAt(1) == format.charAt(1);
+        if (line.length() <= format.length() || next.length() == 0) return false;
+        return next.charAt(0) == format.charAt(0) && line.charAt(1) == format.charAt(1);
     }
 
     @Override
