@@ -26,8 +26,8 @@ public class Heading implements Feature {
         }
 
         for (char letter : in.toCharArray()) {
-            level++;
             if (letter != format.charAt(0)) return false;
+            level++;
             if (level > LIMIT) return false;
 
         }
