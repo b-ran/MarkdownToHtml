@@ -23,6 +23,10 @@ public interface ConversionVisitor {
 
     StringBuilder translate(Block block, StringBuilder out);
 
+    StringBuilder translate(NumberedList numberedList, StringBuilder out);
+
+    StringBuilder translate(BulletedList bulletedList, StringBuilder out);
+
     StringBuilder newline(StringBuilder out);
 
     StringBuilder end(StringBuilder out);

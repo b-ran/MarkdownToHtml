@@ -90,6 +90,16 @@ public class ConversionHtml implements ConversionVisitor {
     }
 
     @Override
+    public StringBuilder translate(NumberedList numberedList, StringBuilder out) {
+        return null;
+    }
+
+    @Override
+    public StringBuilder translate(BulletedList bulletedList, StringBuilder out) {
+        return null;
+    }
+
+    @Override
     public StringBuilder newline(StringBuilder out) {
         out.append("\n");
         nextLocation = out.length();
