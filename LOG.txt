@@ -11,3 +11,5 @@
 20180319 1800 Add blockquote feature, html conversion and testing for blockquote
 20180319 2000 Add inline feature, html conversion and testing for inline 
 20180319 2100 Add code block feature, html conversion, testing for code block and bug fixing
+20180320 2000 Add numbered list & testing
+20180320 2100 Add bullet list, made abstract class for lists & start of testing for bullet list
