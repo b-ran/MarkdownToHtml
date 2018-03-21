@@ -13,3 +13,5 @@
 20180319 2100 Add code block feature, html conversion, testing for code block and bug fixing
 20180320 2000 Add numbered list & testing
 20180320 2100 Add bullet list, made abstract class for lists & start of testing for bullet list
+20180321 2100 Bug fixing list system
+20180321 2200 Add bullet list dection & testing
