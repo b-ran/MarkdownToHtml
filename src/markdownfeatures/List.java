@@ -1,6 +1,5 @@
 package markdownfeatures;
 
-import conversion.ConversionVisitor;
 import markdownfeatures.separation.SeparateNull;
 import markdownfeatures.separation.SeparateTags;
 import markdownfeatures.separation.Separation;
@@ -13,6 +12,8 @@ public abstract class List implements Feature {
     protected Integer maxSpacesSubList;
     protected Character listFormat;
     protected Character sublistFormat;
+
+    protected Integer oldStartWordIndex = 0;
 
 
     public List(Integer maxSpacesList, Integer maxSpacesSubList, Character listFormat, Character sublistFormat) {
@@ -27,6 +28,7 @@ public abstract class List implements Feature {
     public boolean detect(String next, String line) {
         if (!checkValidLineSpacing(line)) return false;
         if (checkValidListFormat(line)) {
+            oldStartWordIndex = getStartWordIndex(line);
             sublist = false;
             if (!separation.isSeparation()) separation = new SeparateTags("");
             return true;
@@ -36,6 +38,19 @@ public abstract class List implements Feature {
             return true;
         }
         return false;
+    }
+
+    Integer getStartWordIndex(String line) {
+        Integer index = 0;
+        for (Character character: line.toCharArray()) {
+            if (!Character.isSpaceChar(character)) return index;
+            index++;
+        }
+        return index;
+    }
+
+    Integer getTotalStartingSpace(String line) {
+       return line.substring(0,getStartWordIndex(line)).length();
     }
 
     @Override
