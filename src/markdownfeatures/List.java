@@ -6,13 +6,13 @@ import markdownfeatures.separation.SeparateTags;
 import markdownfeatures.separation.Separation;
 
 public abstract class List implements Feature {
-    private Separation separation = new SeparateNull();
+    protected Separation separation = new SeparateNull();
     private Boolean sublist = false;
 
-    private Integer maxSpacesList;
-    private Integer maxSpacesSubList;
-    private Character listFormat;
-    private Character sublistFormat;
+    protected Integer maxSpacesList;
+    protected Integer maxSpacesSubList;
+    protected Character listFormat;
+    protected Character sublistFormat;
 
 
     public List(Integer maxSpacesList, Integer maxSpacesSubList, Character listFormat, Character sublistFormat) {
@@ -57,34 +57,11 @@ public abstract class List implements Feature {
         return true;
     }
 
-    private boolean checkValidLineSpacing(String line) {
-        if (!line.startsWith(" ")) return true;
-        Character startLetterOfLine = line.trim().charAt(0);
+    abstract boolean checkValidLineSpacing(String line);
 
-        if (Character.isDigit(startLetterOfLine) && line.length() > maxSpacesList-1) {
-            return (line.charAt(maxSpacesList) != ' ');
-        } else if (startLetterOfLine == sublistFormat && line.length() > maxSpacesSubList-1) {
-            return (line.charAt(maxSpacesSubList) != ' ');
-        }
+    abstract boolean checkValidListFormat(String line);
 
-        return true;
-    }
-
-    private boolean checkValidListFormat(String line) {
-        String in = line.trim();
-        if (in.length() > 2) {
-            return Character.isDigit(in.charAt(0)) && in.charAt(1) == listFormat && in.charAt(2) == ' ';
-        }
-        return false;
-    }
-
-    private boolean checkValidSubListFormat(String line) {
-        String in = line.trim();
-        if (in.length() > 1 && separation.isSeparation()) {
-            return in.charAt(0) == sublistFormat && in.charAt(1) == ' ';
-        }
-        return false;
-    }
+    abstract boolean checkValidSubListFormat(String line);
 
     public boolean isSublist() {
         return sublist;

@@ -13,4 +13,19 @@ public class BulletedList extends List{
     public StringBuilder convert(ConversionVisitor conversionVisitor, StringBuilder out) {
         return conversionVisitor.translate(this, out);
     }
+
+    @Override
+    boolean checkValidLineSpacing(String line) {
+        return false;
+    }
+
+    @Override
+    boolean checkValidListFormat(String line) {
+        return false;
+    }
+
+    @Override
+    boolean checkValidSubListFormat(String line) {
+        return false;
+    }
 }
