@@ -17,9 +17,9 @@ public class NumberedListTest {
         NumberedList numberedList = new NumberedList();
         assertTrue(numberedList.detect("8.", "8. item eight"));
         assertFalse(numberedList.isSublist());
-        assertTrue(numberedList.detect("-", "- sublist"));
+        assertTrue(numberedList.detect("-", "    - sublist"));
         assertTrue(numberedList.isSublist());
-        assertTrue(numberedList.detect("-", "- sublist"));
+        assertTrue(numberedList.detect("-", "    - sublist"));
         assertTrue(numberedList.isSublist());
         assertTrue(numberedList.detect("9.", "9. item nine"));
         assertFalse(numberedList.isSublist());
@@ -65,5 +65,13 @@ public class NumberedListTest {
         NumberedList numberedList = new NumberedList();
         assertTrue(numberedList.detect("1.", "1. item one"));
         assertTrue(numberedList.getSeparation().isSeparation());
+    }
+
+    @Test
+    public void test09_string_detection_valid_numbering() throws Exception {
+        NumberedList numberedList = new NumberedList();
+        assertTrue(numberedList.detect("899.", "899. item"));
+        assertTrue(numberedList.detect("66.", "66. item"));
+        assertTrue(numberedList.detect("4432.", "4432. item"));
     }
 }
