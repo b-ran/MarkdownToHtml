@@ -1,9 +1,8 @@
 package markdownfeatures;
 
 import conversion.ConversionVisitor;
-import markdownfeatures.separation.SeparateNull;
-import markdownfeatures.separation.SeparateTags;
-import markdownfeatures.separation.Separation;
+
+import java.util.Scanner;
 
 public class NumberedList extends List {
 
@@ -19,20 +18,23 @@ public class NumberedList extends List {
      boolean checkValidLineSpacing(String line) {
         if (!line.startsWith(" ")) return true;
         Character startLetterOfLine = line.trim().charAt(0);
-
         if (Character.isDigit(startLetterOfLine) && line.length() > maxSpacesList-1) {
-            return (line.charAt(maxSpacesList) != ' ');
-        } else if (startLetterOfLine == sublistFormat && line.length() > maxSpacesSubList-1) {
-            return (line.charAt(maxSpacesSubList) != ' ');
+            return (maxSpacesList >= getTotalStartingSpace(line));
+        }
+        Integer startWordIndex = getStartWordIndex(line);
+        if (startWordIndex >= oldStartWordIndex) {
+            return (oldStartWordIndex + maxSpacesSubList >= getTotalStartingSpace(line));
         }
 
-        return true;
+        return false;
     }
 
      boolean checkValidListFormat(String line) {
         String in = line.trim();
-        if (in.length() > 2) {
-            return Character.isDigit(in.charAt(0)) && in.charAt(1) == listFormat && in.charAt(2) == ' ';
+        Scanner scanner = new Scanner(in);
+        String tag = scanner.next();
+        if (in.length() > 2 && scanner.hasNext()) {
+            return Character.isDigit(tag.charAt(0)) && tag.endsWith(listFormat.toString()) && in.charAt(tag.length()) == ' ';
         }
         return false;
     }
