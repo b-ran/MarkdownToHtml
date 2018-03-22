@@ -8,6 +8,8 @@ import java.lang.*;
 
 public class ConversionHtml implements ConversionVisitor {
 
+    //TODO: fix code smell better system of defining tags
+    //TODO: move numberList translation to able to used for all types of lists
 
     private int nextLocation = 0;
     private boolean newParagraph = true;
@@ -67,6 +69,7 @@ public class ConversionHtml implements ConversionVisitor {
         StringBuilder output = end(out);
         output.append("\n<hr>");
         nextLocation = output.length();
+        translate(new Paragraph(), out);
         return output;
     }
 
@@ -97,20 +100,25 @@ public class ConversionHtml implements ConversionVisitor {
 
     @Override
     public StringBuilder translate(NumberedList numberedList, StringBuilder out) {
+        Integer tagLength = 4;
         if (startOfList) {
             out.append("<ol>\n</ol>");
-            nextLocation+=4;
+            nextLocation+=5;
             startOfList = false;
+        } else {
+            nextLocation = out.length()-5;
         }
-
         if (!numberedList.isSublist()) startOfSubList = true;
+
+
+        if (startOfSubList && numberedList.isSublist()) {
+            nextLocation -= 6;
+            startOfSubList = false;
+            out.insert(nextLocation,"\n<ul>\n</ul>\n");
+            nextLocation+=6;
+        }
         out.insert(nextLocation,"<li></li>\n");
         nextLocation+=4;
-        if (startOfSubList && numberedList.isSublist()) {
-            startOfSubList = false;
-            out.insert(nextLocation,"<ul>\n</ul>");
-            nextLocation+=4;
-        }
         return out;
     }
 
