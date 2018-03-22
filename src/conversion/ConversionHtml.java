@@ -13,13 +13,17 @@ public class ConversionHtml implements ConversionVisitor {
     private boolean newParagraph = true;
     private boolean endParagraph = false;
 
+    private boolean startOfList = true;
+    private boolean startOfSubList = true;
+
     @Override
     public StringBuilder translate(Heading heading, StringBuilder out) {
-        StringBuilder output = combine("<h" + heading.getLevel() + "></h" + heading.getLevel() + ">", out);
-        nextLocation += 4;
+        String startTag = "\n<h" + heading.getLevel() + ">";
+        String outTag = "</h" + heading.getLevel() + ">";
+        StringBuilder output = combine(startTag+outTag, out);
+        nextLocation += startTag.length();
         return output;
     }
-
 
     @Override
     public StringBuilder translate(Italic italic, StringBuilder out) {
@@ -40,10 +44,10 @@ public class ConversionHtml implements ConversionVisitor {
     @Override
     public StringBuilder translate(Paragraph paragraph, StringBuilder out) {
         if (newParagraph) {
-            out.append("<p>");
+            out.append("\n<p>\n");
             newParagraph = !newParagraph;
         } else if (endParagraph) {
-            out.append("</p><p>");
+            out.append("\n</p>\n<p>");
         }
         endParagraph = false;
         nextLocation = out.length();
@@ -61,15 +65,17 @@ public class ConversionHtml implements ConversionVisitor {
     @Override
     public StringBuilder translate(Separator separator, StringBuilder out) {
         StringBuilder output = end(out);
-        output.append("<hr>");
+        output.append("\n<hr>");
         nextLocation = output.length();
         return output;
     }
 
     @Override
     public StringBuilder translate(Blockquote blockquote, StringBuilder out) {
-        out.append("<blockquote></blockquote>");
-        nextLocation += 12;
+        String startTag = "\n<blockquote>";
+        String endTag = "</blockquote>";
+        out.append(startTag+endTag);
+        nextLocation += startTag.length();
         return out;
     }
 
@@ -91,7 +97,21 @@ public class ConversionHtml implements ConversionVisitor {
 
     @Override
     public StringBuilder translate(NumberedList numberedList, StringBuilder out) {
-        return null;
+        if (startOfList) {
+            out.append("<ol>\n</ol>");
+            nextLocation+=4;
+            startOfList = false;
+        }
+
+        if (!numberedList.isSublist()) startOfSubList = true;
+        out.insert(nextLocation,"<li></li>\n");
+        nextLocation+=4;
+        if (startOfSubList && numberedList.isSublist()) {
+            startOfSubList = false;
+            out.insert(nextLocation,"<ul>\n</ul>");
+            nextLocation+=4;
+        }
+        return out;
     }
 
     @Override
@@ -100,16 +120,9 @@ public class ConversionHtml implements ConversionVisitor {
     }
 
     @Override
-    public StringBuilder newline(StringBuilder out) {
-        out.append("\n");
-        nextLocation = out.length();
-        return out;
-    }
-
-    @Override
     public StringBuilder end(StringBuilder out) {
         if (!newParagraph) {
-            out.append("</p>");
+            out.append("\n</p>");
         }
         return out;
     }

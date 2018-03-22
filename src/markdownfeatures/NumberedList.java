@@ -37,6 +37,7 @@ public class NumberedList extends List {
             return Character.isDigit(tag.charAt(0)) && tag.endsWith(listFormat.toString()) && in.charAt(tag.length()) == ' ';
         }
         return false;
+
     }
 
      boolean checkValidSubListFormat(String line) {
