@@ -14,13 +14,18 @@ public class Interpreter {
     private Scanner scanner;
     private ConversionHtml conversionFormat = new ConversionHtml();
 
-    private static final List<Feature> wordFeatures = new ArrayList<>(Arrays.asList(
+
+    private static final List<Feature> wordFeatures = new ArrayList<Feature>(Arrays.asList(
             new Italic(),
             new Heading(),
             new Bold(),
             new Blockquote(),
-            new Inline()
+            new Inline(),
+            new NumberedList()
     ));
+
+
+
 
     private static final List<Feature> lineFeatures = new ArrayList<>(Arrays.asList(
             new Heading(),
@@ -47,7 +52,6 @@ public class Interpreter {
             Feature feature =  findLineFeature(next, line);
             if (feature.convertible()) {
                 feature.convert(conversionFormat, out);
-                out = conversionFormat.newline(out);
                 continue;
             }
 
@@ -57,7 +61,6 @@ public class Interpreter {
                 next = lineScanner.next();
                 out = findWordFeature(next, line).convert(conversionFormat, out);
             }
-            out = conversionFormat.newline(out);
         }
         return conversionFormat.end(out);
     }
