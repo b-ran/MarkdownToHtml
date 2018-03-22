@@ -29,7 +29,7 @@ public class BulletedList extends List{
         return false;
     }
 
-    boolean checkValidListFormat(String line) {
+    boolean checkValidListFormat(String next, String line) {
         String in = line.trim();
         if (in.length() > 2 && maxSpacesList >=  getTotalStartingSpace(line)) {
             return in.charAt(0) == listFormat && in.charAt(1) == ' ';
@@ -37,7 +37,7 @@ public class BulletedList extends List{
         return false;
     }
 
-    boolean checkValidSubListFormat(String line) {
+    boolean checkValidSubListFormat(String next, String line) {
         String in = line.trim();
         if (in.length() > 2 && separation.isSeparation()) {
             return in.charAt(0) == sublistFormat && in.charAt(1) == ' ';

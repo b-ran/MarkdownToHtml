@@ -29,21 +29,21 @@ public class NumberedList extends List {
         return false;
     }
 
-     boolean checkValidListFormat(String line) {
-        String in = line.trim();
-        Scanner scanner = new Scanner(in);
-        String tag = scanner.next();
-        if (in.length() > 2 && scanner.hasNext()) {
-            return Character.isDigit(tag.charAt(0)) && tag.endsWith(listFormat.toString()) && in.charAt(tag.length()) == ' ';
+     boolean checkValidListFormat(String next, String line) {
+        String nextTrimmed = next.trim();
+        String lineTrimmed = line.trim();
+        if (lineTrimmed.length() > 2) {
+            return Character.isDigit(nextTrimmed.charAt(0)) && nextTrimmed.endsWith(listFormat.toString()) && lineTrimmed.charAt(nextTrimmed.length()) == ' ';
         }
         return false;
 
     }
 
-     boolean checkValidSubListFormat(String line) {
-        String in = line.trim();
-        if (in.length() > 1 && separation.isSeparation()) {
-            return in.charAt(0) == sublistFormat && in.charAt(1) == ' ';
+     boolean checkValidSubListFormat(String next, String line) {
+         String nextTrimmed = next.trim();
+         String lineTrimmed = line.trim();
+        if (lineTrimmed.length() > 1 && separation.isSeparation()) {
+            return nextTrimmed.charAt(0) == sublistFormat && lineTrimmed.charAt(1) == ' ';
         }
         return false;
     }

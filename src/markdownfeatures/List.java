@@ -27,13 +27,13 @@ public abstract class List implements Feature {
     @Override
     public boolean detect(String next, String line) {
         if (!checkValidLineSpacing(line)) return false;
-        if (checkValidListFormat(line)) {
+        if (checkValidListFormat(next, line)) {
             oldStartWordIndex = getStartWordIndex(line);
             sublist = false;
             if (!separation.isSeparation()) separation = new SeparateTags("");
             return true;
         }
-        if (checkValidSubListFormat(line)) {
+        if (checkValidSubListFormat(next, line)) {
             sublist = true;
             return true;
         }
@@ -74,9 +74,9 @@ public abstract class List implements Feature {
 
     abstract boolean checkValidLineSpacing(String line);
 
-    abstract boolean checkValidListFormat(String line);
+    abstract boolean checkValidListFormat(String next, String line);
 
-    abstract boolean checkValidSubListFormat(String line);
+    abstract boolean checkValidSubListFormat(String next, String line);
 
     public boolean isSublist() {
         return sublist;
