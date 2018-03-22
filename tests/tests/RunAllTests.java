@@ -14,7 +14,9 @@ import org.junit.runners.Suite;
         SeparatorTest.class,
         BlockquoteTest.class,
         InlineTest.class,
-        BlockTest.class
+        BlockTest.class,
+        NumberedListTest.class,
+        BulletedListTest.class
 })
 
 public class RunAllTests {
