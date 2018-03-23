@@ -17,7 +17,7 @@ public class Heading implements Feature {
     @Override
     public boolean detect(String next, String line) {
         String in = next.trim();
-
+        level = 0;
         if (in.length() == 0 || line.length() == 0) return false;
         if (!new Scanner(line).next().equals(in)) return false;
 
