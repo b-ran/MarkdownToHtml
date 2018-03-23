@@ -18,8 +18,8 @@ public class ParagraphTest {
     }
 
     @Test
-    public void test03_string_detection_invalid() throws Exception {
-        assertFalse(new Paragraph().detect("      ", "         \n     "));
+    public void test03_string_detection_valid() throws Exception {
+        assertTrue(new Paragraph().detect("      ", "         \n     "));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class ParagraphTest {
     @Test
     public void test06_separation() throws Exception {
         Paragraph paragraph = new Paragraph();
-        assertFalse(paragraph.detect("\n", "\n \n   "));
+        assertFalse(paragraph.detect("ajsd", "asd asdas"));
         assertFalse(paragraph.getSeparation().isSeparation());
     }
 }
