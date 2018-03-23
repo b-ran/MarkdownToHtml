@@ -27,5 +27,7 @@ public interface ConversionVisitor {
 
     StringBuilder translate(BulletedList bulletedList, StringBuilder out);
 
-    StringBuilder end(StringBuilder out);
+    StringBuilder startFile(StringBuilder out);
+
+    StringBuilder endFile(StringBuilder out);
 }
