@@ -21,7 +21,8 @@ public class Interpreter {
             new Bold(),
             new Blockquote(),
             new Inline(),
-            new NumberedList()
+            new NumberedList(),
+            new BulletedList()
     ));
 
 
@@ -62,7 +63,7 @@ public class Interpreter {
                 out = findWordFeature(next, line).convert(conversionFormat, out);
             }
         }
-        return conversionFormat.end(out);
+        return conversionFormat.endFile(out);
     }
 
     private Feature findLineFeature(String next, String line) {
