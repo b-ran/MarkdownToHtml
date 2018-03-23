@@ -62,6 +62,7 @@ public class Interpreter {
                 next = lineScanner.next();
                 out = findWordFeature(next, line).convert(conversionFormat, out);
             }
+            conversionFormat.nextLine(out);
         }
         return conversionFormat.endFile(out);
     }
