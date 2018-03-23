@@ -1,0 +1,29 @@
+
+<blockquote>I think I will buy the red car, or I will lease the blue one. </blockquote><p>
+<ul>
+<li>party 
+<ul>
+<li>throughout </li>
+<li>The waves were crashing on the shore; it was a lovely sight. </li>
+<li>She only paints with bold colors; she does not like pastels. </li>
+</ul>
+</li>
+<li>party </li>
+</ul>
+</p>
+<hr><p>
+<h1>Heading Two </h1>
+
+</p>
+<p>
+bold colors; she does not like pastels. There were white out conditions in the town; subsequently, the roads were impassable 
+</p>
+<ol>
+<li>recently </li>
+<li>freezer </li>
+<li>wasn’t good enough. </li>
+<li>Someone I know recently combined Maple Syrup & buttered Popcorn thinking it would taste like caramel popcorn. It didn’t and they don’t recommend anyone else do it either. </li>
+<li>have </li>
+</ol><p>
+<code>#$*&^@#*(&#$ code </code>
+</p>

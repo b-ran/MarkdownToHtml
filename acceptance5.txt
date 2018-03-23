@@ -1,0 +1,22 @@
+> I think I will buy the red car, or I will lease the blue one.
+ 
+ * party
+   * throughout 
+   * The waves were crashing on the shore; it was a lovely sight.
+   * She only paints with bold colors; she does not like pastels.
+ * party
+ 
+ -------
+ 
+ # Heading Two
+ 
+ bold colors; she does not like pastels.
+ There were white out conditions in the town; subsequently, the roads were impassable
+ 
+ 1. recently 
+ 2. freezer
+ 3. wasn’t good enough.
+    4. Someone I know recently combined Maple Syrup & buttered Popcorn thinking it would taste like caramel popcorn. It didn’t and they don’t recommend anyone else do it either.
+ 5. have 
+ 
+ ` #$*&^@#*(&#$ code `

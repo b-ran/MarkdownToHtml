@@ -1,0 +1,61 @@
+*thing*
+
+Sixty-Four comes asking for bread.
+She wrote him a long letter, but he didn't read it.
+Where do random thoughts come from?
+She did not cheat on the test, for it was not the right thing to do.
+Italy is my favorite country; in fact, I plan to spend two weeks there next year.
+If Purple People Eaters are real… where do they find purple people to eat?
+Let me help you with your baggage.
+
+----------------
+
+* list
+   * list
+* list
+* list
+* list
+   * list
+   * list
+* list
+* list
+   * list
+* list
+   * list
+  
+1. list
+    - list
+1. list
+    - list
+1. list
+    - list
+    - list
+    - list
+    - list
+1. list
+1. list
+    - list
+1. list
+1. list
+
+# heading two
+
+-----------
+
+```
+le the gods.
+They got there early, and they got really good seats.
+He said he was not there yesterday; however, many people saw him there.
+I am happy to take your donation; any amount will be greatly appreciated.
+She always speaks to him in a loud voice.
+The stranger officiates the meal.
+```
+
+> When I was little I had a car door slammed shut on my hand. I still remember it quite vividly.
+> The clock within this blog and the clock on my laptop are 1 hour different from each other.
+
+---------------
+
+`srand(time(NULL..;`
+`cout << random(32. << endl;`
+`for(int i = 0; i < len; i++. r.push_back(a.at(size_t(rand(. % 62...;`
