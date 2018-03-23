@@ -10,7 +10,7 @@ public class Paragraph implements Feature {
 
     @Override
     public boolean detect(String next, String line) {
-        return line.isEmpty();
+        return line.trim().isEmpty();
     }
 
     @Override

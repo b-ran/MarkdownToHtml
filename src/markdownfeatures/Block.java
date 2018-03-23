@@ -12,7 +12,7 @@ public class Block implements Feature {
 
     @Override
     public boolean detect(String next, String line) {
-        return line.equals(format);
+        return line.trim().equals(format);
     }
 
     @Override
