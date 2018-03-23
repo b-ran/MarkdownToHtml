@@ -63,6 +63,11 @@ public class ConversionLatex implements ConversionVisitor {
     }
 
     @Override
+    public StringBuilder nextLine(StringBuilder out) {
+        return null;
+    }
+
+    @Override
     public StringBuilder startFile(StringBuilder out) {
         return out.append(startOfLatex);
     }
