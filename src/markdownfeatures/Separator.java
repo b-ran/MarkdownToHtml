@@ -13,7 +13,14 @@ public class Separator implements Feature {
 
     @Override
     public boolean detect(String next, String line) {
-        return line.matches("[" + format + "]*") && line.length() > 2;
+        return onlyContainsFormat(line.trim()) && line.length() > 2;
+    }
+
+    private boolean onlyContainsFormat(String input) {
+        for (Character character: input.toCharArray()) {
+            if (character != format.charAt(0)) return false;
+        }
+        return true;
     }
 
     @Override
