@@ -12,11 +12,12 @@ public class Console {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter File Path To Convert: ");
-        String in = scanner.nextLine();
+        if (args.length == 0) throw new IllegalArgumentException("Need 1 parameter for file path");
 
-        Interpreter interpreter = new Interpreter(in);
-        write(in, interpreter.convert());
+        Interpreter interpreter = new Interpreter(args[0]);
+        System.out.println("Converting:" + args[0]);
+        write(args[0], interpreter.convert());
+        System.out.println("\n\n\n");
     }
 
     private static void write(String in, StringBuilder stringBuilder) {
