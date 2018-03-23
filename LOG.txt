@@ -15,3 +15,6 @@
 20180320 2100 Add bullet list, made abstract class for lists & start of testing for bullet list
 20180321 2100 Bug fixing list system
 20180321 2200 Add bullet list dection & testing
+20180322 2300 Add translation for lists in html
+20180323 2000 Fix dectecton system for bullet lists
+20180323 2100 Refactored class and method naming & add tag class system for better code quality
