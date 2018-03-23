@@ -5,6 +5,6 @@ public class InlineTag implements Tag{
     public static final String endHtmlTag = "</code>";
 
     public static Integer nextHtmlLocation() {
-        return startHtmlTag.length()+1;
+        return startHtmlTag.length();
     }
 }

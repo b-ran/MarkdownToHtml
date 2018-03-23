@@ -8,8 +8,8 @@ public class HeadingTag implements Tag{
     public final String endHtmlTag;
 
     public HeadingTag(Heading heading) {
-        startHtmlTag =  "\n<h" + heading.getLevel() + ">";
-        endHtmlTag =  "</h" + heading.getLevel() + ">";
+        startHtmlTag =  "<h" + heading.getLevel() + ">";
+        endHtmlTag =  "</h" + heading.getLevel() + ">\n";
     }
 
     public Integer nextHtmlLocation() {
