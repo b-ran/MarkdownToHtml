@@ -18,3 +18,5 @@
 20180322 2300 Add translation for lists in html
 20180323 2000 Fix dectecton system for bullet lists
 20180323 2100 Refactored class and method naming & add tag class system for better code quality
+20180323 2200 Fixed bug & Create Acceptance Tests
+20180323 2300 Fixing Bug & Creating shell run
