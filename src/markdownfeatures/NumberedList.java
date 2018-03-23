@@ -2,9 +2,7 @@ package markdownfeatures;
 
 import conversion.ConversionVisitor;
 
-import java.util.Scanner;
-
-public class NumberedList extends List {
+public class NumberedList extends ListFeature {
 
     public NumberedList() {
         super(4, 6, '.', '-');

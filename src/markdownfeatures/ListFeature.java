@@ -4,7 +4,7 @@ import markdownfeatures.separation.SeparateNull;
 import markdownfeatures.separation.SeparateTags;
 import markdownfeatures.separation.Separation;
 
-public abstract class List implements Feature {
+public abstract class ListFeature implements Feature {
     protected Separation separation = new SeparateNull();
     private Boolean sublist = false;
 
@@ -16,7 +16,7 @@ public abstract class List implements Feature {
     protected Integer oldStartWordIndex = 0;
 
 
-    public List(Integer maxSpacesList, Integer maxSpacesSubList, Character listFormat, Character sublistFormat) {
+    public ListFeature(Integer maxSpacesList, Integer maxSpacesSubList, Character listFormat, Character sublistFormat) {
         this.maxSpacesList = maxSpacesList;
         this.maxSpacesSubList = maxSpacesSubList;
         this.listFormat = listFormat;

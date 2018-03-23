@@ -1,9 +1,8 @@
 package markdownfeatures;
 
 import conversion.ConversionVisitor;
-import markdownfeatures.separation.Separation;
 
-public class BulletedList extends List{
+public class BulletedList extends ListFeature {
 
     public BulletedList() {
         super(2, 6, '*', '*');
@@ -30,17 +29,19 @@ public class BulletedList extends List{
     }
 
     boolean checkValidListFormat(String next, String line) {
-        String in = line.trim();
-        if (in.length() > 2 && maxSpacesList >=  getTotalStartingSpace(line)) {
-            return in.charAt(0) == listFormat && in.charAt(1) == ' ';
+        String nextTrimmed = next.trim();
+        String lineTrimmed = line.trim();
+        if (lineTrimmed.length() > 2 && maxSpacesList >=  getTotalStartingSpace(line)) {
+            return nextTrimmed.charAt(0) == listFormat && lineTrimmed.charAt(1) == ' ';
         }
         return false;
     }
 
     boolean checkValidSubListFormat(String next, String line) {
-        String in = line.trim();
-        if (in.length() > 2 && separation.isSeparation()) {
-            return in.charAt(0) == sublistFormat && in.charAt(1) == ' ';
+        String nextTrimmed = next.trim();
+        String lineTrimmed = line.trim();
+        if (lineTrimmed.length() > 2 && separation.isSeparation()) {
+            return nextTrimmed.charAt(0) == sublistFormat && lineTrimmed.charAt(1) == ' ';
         }
         return false;
     }
